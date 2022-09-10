@@ -1,0 +1,26 @@
+class Solution
+{
+    public:
+    Node* deleteNode(Node *head_ref, int x)
+    {
+      //Your code here
+      Node* temp=head_ref;
+      int count=1;
+      if(head_ref==NULL || head_ref->next==NULL)return NULL;
+    
+    if(x==1){
+        head_ref=head_ref->next;
+        head_ref->prev=NULL;
+        return head_ref;
+    }
+      while(temp && count<x)
+      {
+          count++;
+          temp=temp->next;
+      }
+     
+       temp->prev->next=temp->next;
+       delete temp;
+      return head_ref;
+    }
+};
