@@ -1,0 +1,20 @@
+ bool isSymmetric(struct Node* root)
+    {
+	    // Code here
+	       if(root == NULL) return true;
+	    return isTrue(root->left,root->right);
+    }
+    bool isTrue(struct Node* leftNode, struct Node* rightNode){
+        // base case
+        if(leftNode == NULL && rightNode == NULL) return true;
+        
+        if(leftNode == NULL || rightNode == NULL) return false;
+        
+        if(leftNode->data != rightNode->data) return false;
+        
+        bool checkOne = isTrue(leftNode->left, rightNode->right);
+        bool checkTwo = isTrue(leftNode->right, rightNode->left);
+        
+        // return back to previous Node
+        return checkOne && checkTwo;
+    }
