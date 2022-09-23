@@ -1,0 +1,25 @@
+ int kthLargest(Node *root, int K)
+    {
+        //Your code here
+       priority_queue<int> pq;
+       queue<Node *> q;
+       q.push(root);
+       while(!q.empty())
+       {
+               Node*curr=q.front();
+
+                q.pop();
+
+                pq.push(curr->data);
+
+                if(curr->left!=NULL)q.push(curr->left);
+
+                if(curr->right!=NULL)q.push(curr->right);
+       }
+       int ans=1;
+       while(!pq.empty()){
+           if(ans==K) return pq.top();
+           pq.pop();
+           ans++;
+       }
+    }
