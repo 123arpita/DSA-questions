@@ -1,0 +1,23 @@
+void flatten(Node *root)
+    {
+        //code here
+        
+        if(root){
+            //place right of root in temp
+            Node* temp=root->right;
+            //move left node to right of node
+            root->right=root->left;
+           // make root->left null for flatten
+            root->left=NULL;
+            //used to find right most i.e., last right element
+            Node* t=root;
+            while(t->right!=NULL){
+                t=t->right;
+            }
+            // add right (temp) after this
+            t->right=temp;
+            //flatten all
+            flatten(root->right);
+        }
+        return;
+    }
