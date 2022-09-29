@@ -1,0 +1,24 @@
+ //isomorphic tree are obtained by swapping left and right children of several node.
+    //isomorphic tree is obtained by no swapping also or with swapping
+    bool isIsomorphic(Node *root1,Node *root2)
+    {
+    //add code here.
+      if(root1==NULL&&root2==NULL)
+           return true;
+      if(root1==NULL||root2==NULL)
+          return false;
+      if(root1->data==root2->data)
+      {
+           //checking for left
+        bool res1= isIsomorphic(root1->left,root2->right);
+        bool res2= isIsomorphic(root1->left,root2->left);
+       
+           // checking for right
+        bool res3= isIsomorphic(root1->right,root2->right);
+        bool res4= isIsomorphic(root1->right,root2->left);
+        
+            //  true should be from both left and right
+        return (res1||res2)&&(res3||res4);
+       }
+       return false;
+    }
