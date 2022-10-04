@@ -1,0 +1,8 @@
+ bool isRotated(string str1, string str2)
+    {
+        // Your code here
+        string s = str1 + str1;
+        int p = s.find(str2);
+        if( p == 2 || p == str1.length()-2) return 1;
+        else return 0 ;
+    }
