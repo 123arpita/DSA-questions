@@ -1,0 +1,27 @@
+vector <int> commonElements (int A[], int B[], int C[], int n1, int n2, int n3)
+        {
+            //code here.
+            vector<int> ans;
+            int p=0,q=0,r=0;
+            while(p<n1){
+                while(q<n2 && A[p]>B[q]){
+                    q++;
+                }
+                while(r<n3 && A[p]>C[r]){
+                    r++;
+                }
+                if(A[p]==B[q] && A[p]==C[r]){
+                    if(ans.size()==0)
+                    ans.push_back(A[p]);
+                     else if(ans.size()!=0 && ans[ans.size()-1]!=A[p])
+                     {
+                        ans.push_back(A[p]);
+                      }
+                }
+                p++;
+            }
+            if(ans.empty())
+              ans.push_back(-1);
+            return ans;
+            
+        }
